@@ -23,6 +23,15 @@ margin-left: 30px;
 }
 `;
 
+const Login = styled.div`
+margin-left: auto;
+`;
+
+const Button = styled.button`
+margin-left: 10px;
+`;
+
+
 function HeaderComponent() {
   return (
     <Header>
@@ -32,6 +41,10 @@ function HeaderComponent() {
         <StyledLink to='/history'>History</StyledLink>
         <StyledLink to='/about'>About</StyledLink>
       </nav>
+      <Login>
+        <Button>Login</Button>
+        <Button>Register</Button>
+      </Login>
     </Header>
   )
 
