@@ -1,7 +1,13 @@
 import React from "react";
+import styled from "styled-components";
 
-function Footer() {
-  return (<div>weibu</div>)
+const Footer = styled.footer`
+padding: 0 100px;
+text-align: center;
+`;
+
+function Component() {
+  return (<Footer>footer</Footer>)
 }
 
-export default Footer;
+export default Component;

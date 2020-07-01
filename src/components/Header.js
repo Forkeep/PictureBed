@@ -1,19 +1,40 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import Logo from './logo.svg'
+import {NavLink} from "react-router-dom";
+import LogoImg from './logo.svg'
+import styled from "styled-components";
 
-function Header() {
+const Header = styled.header`
+background-color: green;
+padding: 10px 100px ;
+display: flex;
+align-items: center;
+color: #FFF;
+`;
+
+const Logo = styled.img`
+height: 30px;
+`;
+
+const StyledLink = styled(NavLink)`
+color: red;
+margin-left: 30px;
+&.active{
+  border-bottom: 1px solid red;
+}
+`;
+
+function HeaderComponent() {
   return (
-    <div>
-      <img src={Logo} alt='Logo'/>
-        <nav>
-          <Link to='/'>Home</Link>
-          <Link to='/history'>History</Link>
-          <Link to='/about'>About</Link>
-        </nav>
-    </div>
-)
+    <Header>
+      <Logo src={LogoImg} alt='Logo'/>
+      <nav>
+        <StyledLink to='/' exact activeClassName="active">Home</StyledLink>
+        <StyledLink to='/history'>History</StyledLink>
+        <StyledLink to='/about'>About</StyledLink>
+      </nav>
+    </Header>
+  )
 
 }
 
-export default Header;
+export default HeaderComponent;

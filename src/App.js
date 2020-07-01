@@ -17,8 +17,9 @@ const History = lazy(() => import('./views/history.js'));
 console.log(Loading);
 function App() {
   return (
-    <div className="App">
+    <>
       <Header/>
+      <main>
       <Suspense fallback={Loading()}>
         <Switch>
           <Route path='/' exact component={Home}/>
@@ -26,8 +27,9 @@ function App() {
           <Route path='/about' component={About}/>
         </Switch>
       </Suspense>
+      </main>
       <Footer/>
-    </div>
+    </>
   );
 }
 
