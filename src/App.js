@@ -4,21 +4,14 @@ import Footer from './components/Footer';
 import Header from "./components/Header";
 import {Switch, Route} from 'react-router-dom';
 import Loading from "./components/Loading";
-// import Loading from "./components/Loading";
+import "antd/dist/antd.css"
 
-
-// import Home from "./views/home";
-// import About from "./views/about";
-// import History from "./views/history";
 const Home = lazy(() => import('./views/home.js'));
 const About = lazy(() => import('./views/about.js'));
 const History = lazy(() => import('./views/history.js'));
 const Login = lazy(()=>import('./views/login.js'));
 const Register = lazy(()=>import('./views/register.js'));
 
-
-
-console.log(Loading);
 function App() {
   return (
     <>
