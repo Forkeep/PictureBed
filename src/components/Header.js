@@ -28,7 +28,7 @@ margin-left: auto;
 `;
 
 const Button = styled.button`
-margin-left: 10px;
+margin-left: 4px;
 `;
 
 
@@ -42,8 +42,8 @@ function HeaderComponent() {
         <StyledLink to='/about'>About</StyledLink>
       </nav>
       <Login>
-        <Button>Login</Button>
-        <Button>Register</Button>
+        <Button><StyledLink to='/login'  >Login</StyledLink></Button>
+        <Button><StyledLink to='/register'  >Register</StyledLink></Button>
       </Login>
     </Header>
   )
