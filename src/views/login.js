@@ -7,7 +7,7 @@ const Component = observer(() => {
 
   return (
     <>
-      <h1>Login{AuthStore.value.username}</h1>
+      <h1>Login:{AuthStore.value.username}</h1>
     </>
   )
 });
