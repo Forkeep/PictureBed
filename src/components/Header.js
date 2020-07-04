@@ -4,7 +4,7 @@ import LogoImg from './logo.svg'
 import styled from "styled-components";
 import {Button} from "antd";
 const Header = styled.header`
-background-color: green;
+background-color: #69c06e;
 padding: 10px 100px ;
 display: flex;
 align-items: center;
@@ -16,10 +16,11 @@ height: 30px;
 `;
 
 const StyledLink = styled(NavLink)`
-color: red;
+color: white;
 margin-left: 30px;
+font-size: 16px;
 &.active{
-  border-bottom: 1px solid red;
+  border-bottom: 2px solid white;
 }
 `;
 
@@ -52,8 +53,8 @@ function HeaderComponent() {
             admin:lizhe<MyButton type="danger" onClick={()=>setIsLogin(false)}>Logout</MyButton>
           </> :
           <>
-            <MyButton type="primary"  onClick={()=>setIsLogin(true)} ><StyledLink to='/login' activeClassName='on' >Login</StyledLink></MyButton>
-            <MyButton type="primary" ><StyledLink to='/register' activeClassName='on'>Register</StyledLink></MyButton>
+            <MyButton type="dashed"  onClick={()=>setIsLogin(true)} ><StyledLink to='/login' activeClassName='on' >Login</StyledLink></MyButton>
+            <MyButton type="dashed" ><StyledLink to='/register' activeClassName='on'>Register</StyledLink></MyButton>
           </>
         }
 
