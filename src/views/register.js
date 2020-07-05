@@ -23,6 +23,15 @@ const tailLayout = {
   wrapperCol: {offset: 8, span: 16},
 };
 
+const Validators = {
+  username(rule, value, callback) {
+    if (/\W/.test(value)) return Promise.reject('只能是字母数字下划线');
+    if (value.length < 4 || value.length > 10) return Promise.reject('最大是10最小是4位');
+    return Promise.resolve()
+  },
+};
+
+
 const Component = () => {
   const onFinish = values => {
     console.log('Success:', values);
@@ -32,6 +41,14 @@ const Component = () => {
     console.log('Failed:', errorInfo);
   };
 
+  const validateConfirmPassword = ({getFieldValue}) => {
+    return {
+      validator(rule, value) {
+        if (getFieldValue('password') === value) return Promise.resolve;
+        return Promise.reject('两次密码不一致')
+      }
+    }
+  };
   return (
     <Wrapper>
       <Title>Register</Title>
@@ -45,7 +62,7 @@ const Component = () => {
         <Form.Item
           label="Username"
           name="username"
-          rules={[{required: true, message: 'Please input your username!'}]}
+          rules={[{required: true, message: 'Please input your username!'}, {validator: Validators.username}]}
         >
           <Input/>
         </Form.Item>
@@ -60,7 +77,7 @@ const Component = () => {
         <Form.Item
           label="Confirm"
           name="confirmPassword"
-          rules={[{required: true, message: 'Please input your password!'}]}
+          rules={[{required: true, message: 'Please input your password!'}, validateConfirmPassword]}
         >
           <Input.Password/>
         </Form.Item>
