@@ -1,47 +1,50 @@
 import {observable, action} from "mobx";
+import AuthModel from "../models/index";
 
 class AuthStore {
-  @observable isLogin = false;
-  @observable isLoading = false;
   @observable value = {
-    username: 'lizhe',
-    password: ''
+    username: 'lizheindex',
+    password: '123'
   };
 
-  @action setIsLogin(isLogin) {
-    this.isLogin = isLogin
-  }
-
-  @action setUserName(username) {
-    this.value.username = username
+  @action setUsername(username) {
+    this.value.username = username;
   }
 
   @action setPassword(password) {
-    this.value.password = password
+    this.value.password = password;
   }
 
   @action login() {
-    console.log('longining...');
-    this.isLoading = true;
-    setTimeout(() => {
-      console.log('login success!');
-      this.isLoading = false;
-      this.isLogin = true;
-    }, 1000)
+    return new Promise((resolve, reject) => {
+      AuthModel.login(this.value.username, this.value.password)
+        .then(user => {
+          console.log('登录成功');
+          resolve(user)
+        })
+        .catch(error => {
+          console.log('登录失败');
+          reject(error)
+        })
+    });
   }
 
   @action register() {
-    console.log('registering...');
-    this.isLoading = true;
-    setTimeout(() => {
-      console.log('register success!');
-      this.isLoading = false;
-      this.isLogin = true;
-    }, 1000)
+    return new Promise((resolve, reject) => {
+      AuthModel.register(this.value.username, this.value.password)
+        .then(user => {
+          console.log('注册成功');
+          resolve(user)
+        })
+        .catch(error => {
+          console.log('注册失败');
+          reject(error)
+        })
+    });
   }
 
   @action logout() {
-    console.log('logout!')
+    AuthModel.logout();
   }
 
 }
