@@ -6,16 +6,6 @@ AV.init({
   serverURL: "https://v24cunyj.lc-cn-n1-shared.com"
 });
 
-const user = new User();
-user.setUsername('Tom');
-user.setPassword('cat!@#123');
-user.signUp().then((user) => {
-  // 注册成功
-  console.log(`注册成功。objectId：${user.id}`);
-}, (error) => {
-  // 注册失败（通常是因为用户名已被使用）
-});
-
 
 const AuthModel = {
   register(username, password) {
@@ -23,7 +13,7 @@ const AuthModel = {
     user.setUsername(username);
     user.setPassword(password);
     return new Promise((resolve, reject) => {
-      User.signUp().then(loginUser => resolve(loginUser), error => reject(error))
+      user.signUp().then(loginUser => resolve(loginUser), error => reject(error))
     })
   },
   login(username, password) {
