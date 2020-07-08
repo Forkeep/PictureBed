@@ -1,8 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import {NavLink} from "react-router-dom";
 import LogoImg from './logo.svg'
 import styled from "styled-components";
 import {Button} from "antd";
+import {useStores} from "../stores/index.js"
+import {observer} from "mobx-react";
+
 const Header = styled.header`
 background-color: #69c06e;
 padding: 10px 100px ;
@@ -36,8 +39,17 @@ a{
 `;
 
 
-function HeaderComponent() {
-  const [isLogin, setIsLogin] = useState(false);
+const HeaderComponent = observer(() => {
+  const {UserStore, AuthStore} = useStores();
+  const handleLogin = () => {
+    console.log('denglu')
+  };
+  const handleRegister = () => {
+    console.log('zhuce')
+  };
+  const handleLogout = () => {
+    AuthStore.logout()
+  };
 
   return (
     <Header>
@@ -48,20 +60,20 @@ function HeaderComponent() {
         <StyledLink to='/about'>About</StyledLink>
       </nav>
       <Login>
-        {isLogin ?
+        {UserStore.currentUser ?
           <>
-            admin:lizhe<MyButton type="danger" onClick={()=>setIsLogin(false)}>Logout</MyButton>
+            {UserStore.currentUser.attributes.username} <MyButton type="danger" onClick={handleLogout}>Logout</MyButton>
           </> :
           <>
-            <MyButton type="dashed"  onClick={()=>setIsLogin(true)} ><StyledLink to='/login' activeClassName='on' >Login</StyledLink></MyButton>
-            <MyButton type="dashed" ><StyledLink to='/register' activeClassName='on'>Register</StyledLink></MyButton>
+            <MyButton type="dashed" onClick={handleLogin}>Login</MyButton>
+            <MyButton type="dashed" onClick={handleRegister}>Register</MyButton>
           </>
         }
-
       </Login>
+
     </Header>
   )
 
-}
+})
 
 export default HeaderComponent;

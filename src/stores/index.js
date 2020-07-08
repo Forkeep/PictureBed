@@ -1,8 +1,15 @@
 import {createContext, useContext} from "react";
-import {AuthStore} from "./auth.js";
+import AuthStore from "./auth.js";
+import UserStore from "./user";
 
 const context = createContext({
-  AuthStore: new AuthStore()
+  AuthStore,
+  UserStore
 });
 
-export  const useStores = ()=> useContext(context);
+window.store = {
+  AuthStore,
+  UserStore
+};
+
+export const useStores = () => useContext(context);
