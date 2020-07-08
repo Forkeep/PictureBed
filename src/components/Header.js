@@ -49,8 +49,9 @@ const HeaderComponent = observer(() => {
     history.push('/register')
   };
   const handleLogout = () => {
+    console.log('注销');
     AuthStore.logout();
-    history.push('/')
+    history.push('/login');
   };
 
   return (

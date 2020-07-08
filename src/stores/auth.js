@@ -50,6 +50,7 @@ class AuthStore {
 
   @action logout() {
     AuthModel.logout();
+    UserStore.resetUser();
   }
 
 }
