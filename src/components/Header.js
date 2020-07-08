@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink,useHistory} from "react-router-dom";
 import LogoImg from './logo.svg'
 import styled from "styled-components";
 import {Button} from "antd";
@@ -40,15 +40,17 @@ a{
 
 
 const HeaderComponent = observer(() => {
+  const history = useHistory();
   const {UserStore, AuthStore} = useStores();
   const handleLogin = () => {
-    console.log('denglu')
+    history.push('/login')
   };
   const handleRegister = () => {
-    console.log('zhuce')
+    history.push('/register')
   };
   const handleLogout = () => {
-    AuthStore.logout()
+    AuthStore.logout();
+    history.push('/')
   };
 
   return (
@@ -65,7 +67,7 @@ const HeaderComponent = observer(() => {
             {UserStore.currentUser.attributes.username} <MyButton type="danger" onClick={handleLogout}>Logout</MyButton>
           </> :
           <>
-            <MyButton type="dashed" onClick={handleLogin}>Login</MyButton>
+            <MyButton type="primary" onClick={handleLogin}>Login</MyButton>
             <MyButton type="dashed" onClick={handleRegister}>Register</MyButton>
           </>
         }

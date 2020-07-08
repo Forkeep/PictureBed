@@ -3,7 +3,7 @@ import {Form, Input, Button} from 'antd';
 import styled from "styled-components";
 import {useStores} from "../stores";
 import {AuthStore} from "../stores/auth";
-
+import {useHistory} from "react-router-dom"
 const Wrapper = styled.div`
 max-width: 600px;
 padding: 20px;
@@ -35,6 +35,7 @@ const Validators = {
 
 
 const Component = () => {
+  const history = useHistory();
   const {AuthStore} = useStores();
   const onFinish = values => {
     console.log('Success:', values);
@@ -43,6 +44,7 @@ const Component = () => {
     AuthStore.login()
       .then(()=>{
         console.log('登录成功跳转首页');
+        history.push('/')
       })
       .catch(()=>{
         console.log('登录失败不跳转')
