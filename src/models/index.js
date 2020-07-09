@@ -29,4 +29,23 @@ const AuthModel = {
   }
 };
 
-export default AuthModel
+const UploaderModel = {
+  add(file, filename) {
+    const item = new AV.Object('Image');
+    const avFile = new AV.file(filename, file);
+    item.set('filename', filename);
+    item.set('owner', AV.User.current());
+    item.set('url', avFile);
+    return new Promise((resolve, reject) => {
+      item.save().then(data => {resolve(data)}, error => {reject(error)})
+    });
+
+  },
+
+};
+
+
+export default {
+  AuthModel,
+  UploaderModel
+};

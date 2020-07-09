@@ -2,7 +2,6 @@ import React from "react";
 import {Form, Input, Button} from 'antd';
 import styled from "styled-components";
 import {useStores} from "../stores";
-import {AuthStore} from "../stores/auth";
 import {useHistory} from "react-router-dom"
 const Wrapper = styled.div`
 max-width: 600px;

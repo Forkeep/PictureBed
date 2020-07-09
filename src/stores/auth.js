@@ -1,5 +1,5 @@
 import {observable, action} from "mobx";
-import AuthModel from "../models/index";
+import AuthModel from "../models/index.js";
 import UserStore from "./user"
 
 class AuthStore {

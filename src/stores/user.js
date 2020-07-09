@@ -1,5 +1,5 @@
 import {observable, action} from "mobx";
-import AuthModel from "../models";
+import AuthModel from "../models/index";
 
 class UserStore {
   @observable currentUser = null;
