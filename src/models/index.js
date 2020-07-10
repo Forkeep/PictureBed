@@ -6,6 +6,7 @@ AV.init({
   serverURL: "https://v24cunyj.lc-cn-n1-shared.com"
 });
 
+console.log(AV);
 
 const AuthModel = {
   register(username, password) {
