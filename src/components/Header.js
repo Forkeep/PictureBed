@@ -50,7 +50,7 @@ const HeaderComponent = observer(() => {
   };
   const handleLogout = () => {
     AuthStore.logout();
-    history.push('/')
+    history.push('/login')
   };
 
   return (
